@@ -1,21 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ page import="Classes.User" %>
 
-<%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
-
-    User user = (User) session.getAttribute("user");
-    if (user != null) {
-        if (user.getRole().equals("admin")) {
-            response.sendRedirect("admin-dashboard.jsp");
-        } else {
-            response.sendRedirect("customer-dashboard.jsp");
-        }
-        return;
-    }
-%>
 
 <!DOCTYPE html>
 <html>
@@ -40,6 +24,9 @@
         <input type="password" name="password" required>
 
         <button type="submit">Login</button>
+
+
+        <p>Don't have an account? <a href="signup.jsp">Sign up here</a></p>
     </form>
 
     <div class="footer">© 2025 Mega City Cab</div>
