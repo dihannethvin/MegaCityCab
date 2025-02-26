@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/AdminDAO.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/CustomerDAO.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/DriverDAO.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/AddDriverServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/models/Vehicle.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/VehicleDAO.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/GetAllVehiclesServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/GetVehicleByIdServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/AddVehicleServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/UpdateVehicleServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/DeleteVehicleServlet.java</file>
         </group>
     </open-files>
 </project-private>

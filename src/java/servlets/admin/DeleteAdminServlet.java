@@ -23,7 +23,6 @@ public class DeleteAdminServlet extends HttpServlet {
                 response.getWriter().write("Error deleting admin.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

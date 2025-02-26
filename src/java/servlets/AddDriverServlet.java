@@ -31,7 +31,6 @@ public class AddDriverServlet extends HttpServlet {
                 response.sendRedirect("manage-drivers.jsp?error=Failed to add driver.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("manage-drivers.jsp?error=Database error.");
         }
     }

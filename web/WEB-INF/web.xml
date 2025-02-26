@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <!-- Servlet Configuration -->
     <servlet>
         <servlet-name>AdminLoginServlet</servlet-name>
         <servlet-class>servlets.AdminLoginServlet</servlet-class>
@@ -49,17 +50,26 @@
         <servlet-class>servlets.DeleteDriverServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddCustomerServlet</servlet-name>
-        <servlet-class>servlets.AddCustomerServlet</servlet-class>
+        <servlet-name>GetAllVehiclesServlet</servlet-name>
+        <servlet-class>servlets.GetAllVehiclesServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateCustomerServlet</servlet-name>
-        <servlet-class>servlets.UpdateCustomerServlet</servlet-class>
+        <servlet-name>GetVehicleByIdServlet</servlet-name>
+        <servlet-class>servlets.GetVehicleByIdServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteCustomerServlet</servlet-name>
-        <servlet-class>servlets.DeleteCustomerServlet</servlet-class>
+        <servlet-name>AddVehicleServlet</servlet-name>
+        <servlet-class>servlets.AddVehicleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateVehicleServlet</servlet-name>
+        <servlet-class>servlets.UpdateVehicleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteVehicleServlet</servlet-name>
+        <servlet-class>servlets.DeleteVehicleServlet</servlet-class>
+    </servlet>
+    <!-- Servlet Mappings -->
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
         <url-pattern>/AdminLoginServlet</url-pattern>
@@ -109,18 +119,28 @@
         <url-pattern>/DeleteDriverServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddCustomerServlet</servlet-name>
-        <url-pattern>/AddCustomerServlet</url-pattern>
+        <servlet-name>GetAllVehiclesServlet</servlet-name>
+        <url-pattern>/GetAllVehiclesServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateCustomerServlet</servlet-name>
-        <url-pattern>/UpdateCustomerServlet</url-pattern>
+        <servlet-name>GetVehicleByIdServlet</servlet-name>
+        <url-pattern>/GetVehicleByIdServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteCustomerServlet</servlet-name>
-        <url-pattern>/DeleteCustomerServlet</url-pattern>
+        <servlet-name>AddVehicleServlet</servlet-name>
+        <url-pattern>/AddVehicleServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateVehicleServlet</servlet-name>
+        <url-pattern>/UpdateVehicleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteVehicleServlet</servlet-name>
+        <url-pattern>/DeleteVehicleServlet</url-pattern>
+    </servlet-mapping>
+    <!-- Welcome File Configuration -->
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <!-- Ensures index.jsp is loaded first -->
     </welcome-file-list>
 </web-app>

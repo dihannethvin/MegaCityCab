@@ -7,19 +7,17 @@ public class Driver {
     private String gender;
     private String vehicleType;
     private String licenseNumber;
-    private int carId;
+    private int vehicleId;  // Rename to vehicleId to match the DB
 
-    // Constructors
-    public Driver() {}
-
-    public Driver(int id, String name, String phone, String gender, String vehicleType, String licenseNumber, int carId) {
+    // Constructor
+    public Driver(int id, String name, String phone, String gender, String vehicleType, String licenseNumber, int vehicleId) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.gender = gender;
         this.vehicleType = vehicleType;
         this.licenseNumber = licenseNumber;
-        this.carId = carId;
+        this.vehicleId = vehicleId;
     }
 
     // Getters and Setters
@@ -41,6 +39,6 @@ public class Driver {
     public String getLicenseNumber() { return licenseNumber; }
     public void setLicenseNumber(String licenseNumber) { this.licenseNumber = licenseNumber; }
 
-    public int getCarId() { return carId; }
-    public void setCarId(int carId) { this.carId = carId; }
+    public int getVehicleId() { return vehicleId; }  // Changed from carId to vehicleId
+    public void setVehicleId(int vehicleId) { this.vehicleId = vehicleId; }
 }

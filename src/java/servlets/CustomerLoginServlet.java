@@ -31,7 +31,6 @@ public class CustomerLoginServlet extends HttpServlet {
                 request.getRequestDispatcher("customerLogin.jsp").forward(request, response);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }

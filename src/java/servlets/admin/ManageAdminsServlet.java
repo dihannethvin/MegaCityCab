@@ -21,7 +21,6 @@ public class ManageAdminsServlet extends HttpServlet {
             request.setAttribute("adminList", adminList);
             request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

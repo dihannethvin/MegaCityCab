@@ -32,7 +32,6 @@ public class UpdateDriverServlet extends HttpServlet {
                 response.sendRedirect("manage-drivers.jsp?error=Failed to update driver.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("manage-drivers.jsp?error=Database error.");
         }
     }

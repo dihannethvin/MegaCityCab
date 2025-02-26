@@ -25,13 +25,12 @@ public class AdminLoginServlet extends HttpServlet {
             if (admin != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("admin", admin);
-                response.sendRedirect("adminDashboard.jsp"); // Redirect to admin dashboard
+                response.sendRedirect("admin-dashboard.jsp"); // Redirect to admin dashboard
             } else {
                 request.setAttribute("error", "Invalid Username or Password!");
                 request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }

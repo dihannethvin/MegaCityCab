@@ -24,7 +24,7 @@ public class DriverDAO {
                         rs.getString("gender"),
                         rs.getString("vehicle_type"),
                         rs.getString("license_number"),
-                        rs.getString("car_id")
+                        rs.getInt("vehicle_id")  // Correct field name
                 ));
             }
         }
@@ -33,7 +33,7 @@ public class DriverDAO {
 
     // Add a new driver
     public boolean addDriver(Driver driver) throws SQLException {
-        String query = "INSERT INTO drivers (name, phone, gender, vehicle_type, license_number, car_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO drivers (name, phone, gender, vehicle_type, license_number, vehicle_id) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
 
@@ -42,7 +42,7 @@ public class DriverDAO {
             stmt.setString(3, driver.getGender());
             stmt.setString(4, driver.getVehicleType());
             stmt.setString(5, driver.getLicenseNumber());
-            stmt.setString(6, driver.getCarId());
+            stmt.setInt(6, driver.getVehicleId());  // Handle vehicle_id as an int
 
             return stmt.executeUpdate() > 0;
         }
@@ -50,7 +50,7 @@ public class DriverDAO {
 
     // Update driver details
     public boolean updateDriver(Driver driver) throws SQLException {
-        String query = "UPDATE drivers SET name=?, phone=?, gender=?, vehicle_type=?, license_number=?, car_id=? WHERE id=?";
+        String query = "UPDATE drivers SET name=?, phone=?, gender=?, vehicle_type=?, license_number=?, vehicle_id=? WHERE id=?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
 
@@ -59,7 +59,7 @@ public class DriverDAO {
             stmt.setString(3, driver.getGender());
             stmt.setString(4, driver.getVehicleType());
             stmt.setString(5, driver.getLicenseNumber());
-            stmt.setString(6, driver.getCarId());
+            stmt.setInt(6, driver.getVehicleId());  // Handle vehicle_id as an int
             stmt.setInt(7, driver.getId());
 
             return stmt.executeUpdate() > 0;

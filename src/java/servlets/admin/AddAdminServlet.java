@@ -28,7 +28,6 @@ public class AddAdminServlet extends HttpServlet {
                 response.getWriter().write("Error adding admin.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

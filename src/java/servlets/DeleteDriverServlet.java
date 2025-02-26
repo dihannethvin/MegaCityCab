@@ -23,7 +23,6 @@ public class DeleteDriverServlet extends HttpServlet {
                 response.sendRedirect("manage-drivers.jsp?error=Failed to delete driver.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("manage-drivers.jsp?error=Database error.");
         }
     }

@@ -31,7 +31,6 @@ public class AdminSignupServlet extends HttpServlet {
                 request.getRequestDispatcher("manageAdmins.jsp").forward(request, response);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }

@@ -29,7 +29,6 @@ public class UpdateAdminServlet extends HttpServlet {
                 response.getWriter().write("Error updating admin.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

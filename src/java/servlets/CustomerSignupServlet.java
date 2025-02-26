@@ -35,7 +35,6 @@ public class CustomerSignupServlet extends HttpServlet {
                 request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }
