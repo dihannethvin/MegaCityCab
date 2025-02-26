@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin-dashboard.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/signup.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/login.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/Servlets/LoginServlet.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/Servlets/AdminServlet.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/Classes/User.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/Classes/UserDAO.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/Classes/SignupDAO.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/Servlets/SignupServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/AdminDAO.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/CustomerDAO.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/DriverDAO.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/AddDriverServlet.java</file>
         </group>
     </open-files>
 </project-private>
