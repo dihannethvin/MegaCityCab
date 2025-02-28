@@ -23,7 +23,7 @@
         </tr>
         <%
             CustomerDAO customerDAO = new CustomerDAO();
-            List<Customer> customers = customerDAO.getAllCustomers();
+            List<Customer> customers = customerDAO.getAllCustomers(); // Fetch all customers from the database
             for (Customer customer : customers) {
         %>
         <tr>
@@ -35,11 +35,14 @@
             <td><%= customer.getNic() %></td>
             <td><%= customer.getPhone() %></td>
             <td>
+                <!-- Edit Customer Form -->
                 <form action="UpdateCustomerServlet" method="post">
                     <input type="hidden" name="id" value="<%= customer.getId() %>">
                     <input type="submit" value="Edit">
                 </form>
-                <form action="DeleteCustomerServlet" method="post" onsubmit="return confirm('Are you sure?');">
+
+                <!-- Delete Customer Form -->
+                <form action="DeleteCustomerServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this customer?');">
                     <input type="hidden" name="id" value="<%= customer.getId() %>">
                     <input type="submit" value="Delete">
                 </form>

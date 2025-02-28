@@ -10,10 +10,6 @@
         <servlet-class>servlets.CustomerLoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>servlets.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminSignupServlet</servlet-name>
         <servlet-class>servlets.AdminSignupServlet</servlet-class>
     </servlet>
@@ -24,18 +20,6 @@
     <servlet>
         <servlet-name>ManageAdminsServlet</servlet-name>
         <servlet-class>servlets.admin.ManageAdminsServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddAdminServlet</servlet-name>
-        <servlet-class>servlets.admin.AddAdminServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateAdminServlet</servlet-name>
-        <servlet-class>servlets.admin.UpdateAdminServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteAdminServlet</servlet-name>
-        <servlet-class>servlets.admin.DeleteAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddDriverServlet</servlet-name>
@@ -70,6 +54,14 @@
         <servlet-class>servlets.DeleteVehicleServlet</servlet-class>
     </servlet>
     <!-- Servlet Mappings -->
+    <servlet>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <servlet-class>servlets.admin.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controllers.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
         <url-pattern>/AdminLoginServlet</url-pattern>
@@ -77,10 +69,6 @@
     <servlet-mapping>
         <servlet-name>CustomerLoginServlet</servlet-name>
         <url-pattern>/CustomerLoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminSignupServlet</servlet-name>
@@ -93,18 +81,6 @@
     <servlet-mapping>
         <servlet-name>ManageAdminsServlet</servlet-name>
         <url-pattern>/ManageAdminsServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddAdminServlet</servlet-name>
-        <url-pattern>/AddAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateAdminServlet</servlet-name>
-        <url-pattern>/UpdateAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteAdminServlet</servlet-name>
-        <url-pattern>/DeleteAdminServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddDriverServlet</servlet-name>
@@ -139,8 +115,11 @@
         <url-pattern>/DeleteVehicleServlet</url-pattern>
     </servlet-mapping>
     <!-- Welcome File Configuration -->
+    <servlet-mapping>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <url-pattern>/AddCustomerServlet</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        <!-- Ensures index.jsp is loaded first -->
     </welcome-file-list>
 </web-app>

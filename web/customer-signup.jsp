@@ -1,10 +1,9 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - Mega City Cab</title>
+    <title>Customer Signup - Mega City Cab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -21,7 +20,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
             margin-top: 50px;
         }
@@ -40,7 +39,7 @@
         .footer a:hover {
             text-decoration: underline;
         }
-        .login-form input {
+        .signup-form input {
             margin-bottom: 15px;
         }
         .btn-primary {
@@ -51,6 +50,10 @@
         .btn-primary:hover {
             background-color: #0056b3;
             border-color: #0056b3;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -81,6 +84,13 @@
                             Are you a Customer?
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white px-4 py-2 mx-2 fw-bold shadow-lg" 
+                           href="admin-login.jsp" 
+                           style="border-radius: 5px; transition: 0.3s; box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);">
+                            Are you an Admin?
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -89,16 +99,20 @@
     <!-- Content -->
     <div class="container my-5">
         <div class="card shadow-lg">
-            <h2 class="fw-bold mb-4 text-center">Admin Login</h2>
+            <h2 class="fw-bold mb-4 text-center">Customer Sign Up</h2>
 
-            <!-- Display error message if login fails -->
-            <% String error = (String) request.getAttribute("error"); %>
-            <% if (error != null) { %>
-                <p style="color: red;" class="text-center"><%= error %></p>
-            <% } %>
+            <!-- Sign Up Form -->
+            <form action="CustomerSignup" method="post" class="signup-form">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
 
-            <!-- Login Form -->
-            <form action="AdminLoginServlet" method="post" class="login-form">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" id="username" name="username" class="form-control" required>
@@ -109,8 +123,36 @@
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="address" name="address" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nic" class="form-label">NIC</label>
+                    <input type="text" id="nic" name="nic" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" id="phone" name="phone" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             </form>
+            
+            <c:if test="${not empty error}">
+                <div style="color:red">${error}</div>
+            </c:if>
+
+            <c:if test="${not empty success}">
+                <div style="color:green">${success}</div>
+            </c:if>
+
+            <!-- Login Link -->
+            <div class="login-link">
+                <p>Already have an account? <a href="customer-login.jsp" class="text-decoration-none text-primary">Login here</a></p>
+            </div>
         </div>
     </div>
 
