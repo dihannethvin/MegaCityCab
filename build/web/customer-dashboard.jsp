@@ -57,6 +57,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="book.jsp">Book a Ride</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking-history.jsp">Booking History</a></li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-danger text-white px-4 py-2" href="LogoutServlet">Logout</a>
                     </li>
@@ -77,7 +78,6 @@
     <div class="container mt-4">
         <ul class="nav nav-tabs" id="dashboardTabs">
             <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#profile">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#bookings">Booking History</a></li>
         </ul>
 
         <div class="tab-content mt-4">

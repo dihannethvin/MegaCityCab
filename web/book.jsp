@@ -79,7 +79,7 @@
 
     <!-- Booking Form -->
     <div class="container">
-        <h2 class="text-warning text-center">Book Your Ride</h2>
+        <h2 class="text-center">Book Your Ride</h2>
 
         <form action="BookingServlet" method="post">
             <div class="mb-3">
@@ -110,12 +110,6 @@
                 </select>
             </div>
 
-            <!-- Leaflet Map -->
-            <div id="map"></div>
-            
-            <button type="button" class="btn btn-info w-100" onclick="calculateRoute()">Calculate Fare</button>
-            <p id="fare_display" class="mt-3 text-center text-success fw-bold"></p>
-
             <input type="hidden" id="distance" name="distance">
             <input type="hidden" id="fare" name="fare">
 
@@ -131,44 +125,6 @@
         <p class="mb-0">&copy; 2025 Mega City Cab. All rights reserved.</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        var map;
-        var marker1, marker2;
-        var distance, fare;
-
-        function initMap() {
-            map = L.map('map').setView([6.9271, 79.8612], 13); // Colombo, Sri Lanka
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-            marker1 = L.marker([6.9271, 79.8612]).addTo(map).bindPopup("Pick-up Location");
-            marker2 = L.marker([6.9271, 79.8612]).addTo(map).bindPopup("Drop-off Location");
-
-            var pickupInput = document.getElementById("pickup_location");
-            var dropoffInput = document.getElementById("dropoff_location");
-        }
-
-        function calculateRoute() {
-            var pickup = document.getElementById("pickup_location").value;
-            var dropoff = document.getElementById("dropoff_location").value;
-
-            if (!pickup || !dropoff) {
-                alert("Please enter both pickup and drop-off locations.");
-                return;
-            }
-
-            // Simple static distance calculation as an example
-            distance = 5; // 5 km
-            fare = distance * 10; // Rs 10 per km
-
-            // Display the calculated fare
-            document.getElementById("fare_display").textContent = "Estimated Fare: Rs " + fare;
-            document.getElementById("distance").value = distance;
-            document.getElementById("fare").value = fare;
-        }
-
-        window.onload = initMap;
-    </script>
 
 </body>
 </html>

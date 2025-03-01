@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
     <!-- Servlet Configuration -->
     <servlet>
         <servlet-name>AdminLoginServlet</servlet-name>
@@ -22,46 +25,15 @@
         <servlet-class>servlets.admin.ManageAdminsServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddDriverServlet</servlet-name>
-        <servlet-class>servlets.AddDriverServlet</servlet-class>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>servlets.BookingServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateDriverServlet</servlet-name>
-        <servlet-class>servlets.UpdateDriverServlet</servlet-class>
+        <servlet-name>CancelBookingServlet</servlet-name>
+        <servlet-class>servlets.CancelBookingServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>DeleteDriverServlet</servlet-name>
-        <servlet-class>servlets.DeleteDriverServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetAllVehiclesServlet</servlet-name>
-        <servlet-class>servlets.GetAllVehiclesServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetVehicleByIdServlet</servlet-name>
-        <servlet-class>servlets.GetVehicleByIdServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddVehicleServlet</servlet-name>
-        <servlet-class>servlets.AddVehicleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateVehicleServlet</servlet-name>
-        <servlet-class>servlets.UpdateVehicleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteVehicleServlet</servlet-name>
-        <servlet-class>servlets.DeleteVehicleServlet</servlet-class>
-    </servlet>
+
     <!-- Servlet Mappings -->
-    <servlet>
-        <servlet-name>AddCustomerServlet</servlet-name>
-        <servlet-class>servlets.admin.AddCustomerServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>controllers.LogoutServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
         <url-pattern>/AdminLoginServlet</url-pattern>
@@ -79,46 +51,15 @@
         <url-pattern>/CustomerSignupServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ManageAdminsServlet</servlet-name>
-        <url-pattern>/ManageAdminsServlet</url-pattern>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/BookingServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddDriverServlet</servlet-name>
-        <url-pattern>/AddDriverServlet</url-pattern>
+        <servlet-name>CancelBookingServlet</servlet-name>
+        <url-pattern>/CancelBookingServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateDriverServlet</servlet-name>
-        <url-pattern>/UpdateDriverServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteDriverServlet</servlet-name>
-        <url-pattern>/DeleteDriverServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetAllVehiclesServlet</servlet-name>
-        <url-pattern>/GetAllVehiclesServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetVehicleByIdServlet</servlet-name>
-        <url-pattern>/GetVehicleByIdServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddVehicleServlet</servlet-name>
-        <url-pattern>/AddVehicleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateVehicleServlet</servlet-name>
-        <url-pattern>/UpdateVehicleServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteVehicleServlet</servlet-name>
-        <url-pattern>/DeleteVehicleServlet</url-pattern>
-    </servlet-mapping>
+
     <!-- Welcome File Configuration -->
-    <servlet-mapping>
-        <servlet-name>AddCustomerServlet</servlet-name>
-        <url-pattern>/AddCustomerServlet</url-pattern>
-    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

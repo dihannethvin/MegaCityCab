@@ -38,25 +38,32 @@ public class AdminDAO {
         }
     }
 
-    // Fetch All Admins
-    public List<Admin> getAllAdmins() throws SQLException {
-        List<Admin> adminList = new ArrayList<>();
-        String query = "SELECT * FROM admins";
-
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
+    public static List<Admin> getAllAdmins() {
+        List<Admin> admins = new ArrayList<>();
+        Connection conn = DatabaseConnection.getConnection();
+        String sql = "SELECT * FROM admins";  // Make sure your table name is correct
+        
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            
             while (rs.next()) {
-                adminList.add(new Admin(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("username"),
-                        rs.getString("password")
-                ));
+                Admin admin = new Admin();
+                admin.setId(rs.getInt("id"));
+                admin.setName(rs.getString("name"));
+                admin.setUsername(rs.getString("username"));
+                admins.add(admin);
             }
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return adminList;
+        
+        return admins;
     }
 
     // Update Admin

@@ -15,15 +15,6 @@
         .navbar {
             background-color: #343a40 !important;
         }
-        .card {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: 0 auto;
-            margin-top: 50px;
-        }
         .footer {
             background-color: #343a40;
             color: white;
@@ -75,50 +66,72 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto"> <!-- Add ms-auto here to push items to the right -->
+                    <li class="nav-item"><a class="nav-link active" href="admin-dashboard.jsp">Dashboard</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin-dashboard.jsp">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage-admins.jsp">Manage Admins</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage-drivers.jsp">Manage Drivers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage-vehicles.jsp">Manage Vehicles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage-customers.jsp">Manage Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="LogoutServlet">Logout</a>
+                        <a class="nav-link btn btn-danger text-white px-4 py-2" href="LogoutServlet">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+
+    <!-- Hero Section -->
+    <div class="container mt-4">
+        <div class="alert alert-primary text-center">
+            <h2>Welcome, Admin!</h2>
+            <p>Manage all aspects of Mega City Cab's operations here.</p>
+        </div>
+    </div>
+
     <!-- Admin Dashboard Content -->
-    <div class="container my-5">
-        <div class="card shadow-lg">
-            <h2 class="fw-bold mb-4 text-center">Welcome, Admin</h2>
-
-            <div class="dashboard-links">
-                <a href="manage-admins.jsp">Manage Admins</a>
-                <a href="manage-drivers.jsp">Manage Drivers</a>
-                <a href="manage-vehicles.jsp">Manage Vehicles</a>
-                <a href="manage-customers.jsp">Manage Customers</a>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="fw-bold text-center">Manage Admins</h3>
+                        <p class="text-center">Add, Update, and Delete Admin Users.</p>
+                        <a href="manage-admins.jsp" class="btn btn-primary w-100">Go to Manage Admins</a>
+                    </div>
+                </div>
             </div>
-
-            <a href="LogoutServlet" class="logout-btn w-100 text-center">Logout</a>
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="fw-bold text-center">Manage Drivers</h3>
+                        <p class="text-center">Add, Update, and Delete Drivers.</p>
+                        <a href="manage-drivers.jsp" class="btn btn-primary w-100">Go to Manage Drivers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="fw-bold text-center">Manage Vehicles</h3>
+                        <p class="text-center">Add, Update, and Delete Vehicles.</p>
+                        <a href="manage-vehicles.jsp" class="btn btn-primary w-100">Go to Manage Vehicles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="fw-bold text-center">Manage Customers</h3>
+                        <p class="text-center">Add, Update, and Delete Customer Records.</p>
+                        <a href="manage-customers.jsp" class="btn btn-primary w-100">Go to Manage Customers</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="mb-0">🚖 <strong>Mega City Cab</strong> - Admin Dashboard</p>
+            <p class="mb-1">🚖 <strong>Mega City Cab</strong> - Admin Dashboard</p>
+            <p class="mb-0">&copy; 2025 Mega City Cab. All rights reserved.</p>
         </div>
     </footer>
 

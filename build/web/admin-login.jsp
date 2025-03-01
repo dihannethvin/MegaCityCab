@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: url('images/hero-wallpaper.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             min-height: 100vh;

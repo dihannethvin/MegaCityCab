@@ -3,6 +3,7 @@ package dao;
 import DatabaseConnection.DatabaseConnection;
 import models.Customer;
 import java.sql.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -118,4 +119,33 @@ public class CustomerDAO {
             throw e;
         }
     }
+    public List<Customer> getAllCustomers() throws SQLException {
+        List<Customer> customers = new ArrayList<>();
+        String query = "SELECT * FROM customers";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                // Using the constructor with 'id' to load customer data
+                Customer customer = new Customer(
+                    rs.getInt("id"),          // id from database
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("username"),
+                    rs.getString("password"),
+                    rs.getString("address"),
+                    rs.getString("nic"),
+                    rs.getString("phone")
+                );
+                customers.add(customer);
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error fetching all customers", e);
+            throw e;
+        }
+        return customers;
+    }
+
 }

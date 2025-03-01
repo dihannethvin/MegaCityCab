@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import models.Customer;
 
-@WebServlet("/add-customer")
+@WebServlet("/admin/AddCustomerServlet")
 public class AddCustomerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

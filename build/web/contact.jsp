@@ -8,25 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: url('images/hero-wallpaper.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-        }
-        .hero-section {
-            background: url('images/hero-wallpaper.jpg') center/cover no-repeat;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        .hero-overlay {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 50px;
-            border-radius: 10px;
         }
         .navbar {
             background-color: #343a40 !important;
@@ -61,6 +46,20 @@
                     <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.jsp">About Us</a></li>
                     <li class="nav-item"><a class="nav-link active" href="contact.jsp">Contact Us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white px-4 py-2 mx-2 fw-bold shadow-lg" 
+                           href="customer-login.jsp" 
+                           style="border-radius: 5px; transition: 0.3s; box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);">
+                            Are you a Customer?
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white px-4 py-2 mx-2 fw-bold shadow-lg" 
+                           href="admin-login.jsp" 
+                           style="border-radius: 5px; transition: 0.3s; box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);">
+                            Are you an Admin?
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
