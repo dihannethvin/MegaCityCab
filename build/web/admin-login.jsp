@@ -1,4 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession currentSession = request.getSession(false);
+    if (currentSession != null && currentSession.getAttribute("admin") != null) {
+        response.sendRedirect("admin/admin-dashboard.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,6 +135,19 @@
             <p class="mb-0">&copy; 2025 Mega City Cab. All rights reserved.</p>
         </div>
     </footer>
+    
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
+        window.onload = function () {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+        };
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

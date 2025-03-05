@@ -66,20 +66,34 @@ public class AdminDAO {
         return admins;
     }
 
-    // Update Admin
+    // Update Admin (Fixed to Only Update Password if Provided)
     public boolean updateAdmin(Admin admin) throws SQLException {
-        String query = "UPDATE admins SET name = ?, username = ?, password = ? WHERE id = ?";
+        String sql;
+        boolean updatePassword = (admin.getPassword() != null && !admin.getPassword().isEmpty());
+
+        if (updatePassword) {
+            sql = "UPDATE admins SET name = ?, username = ?, password = ? WHERE id = ?";
+        } else {
+            sql = "UPDATE admins SET name = ?, username = ? WHERE id = ?";
+        }
+
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(query)) {
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, admin.getName());
             stmt.setString(2, admin.getUsername());
-            stmt.setString(3, admin.getPassword());
-            stmt.setInt(4, admin.getId());
+
+            if (updatePassword) {
+                stmt.setString(3, admin.getPassword());
+                stmt.setInt(4, admin.getId());
+            } else {
+                stmt.setInt(3, admin.getId());
+            }
 
             return stmt.executeUpdate() > 0;
         }
     }
+
 
     // Delete Admin
     public boolean deleteAdmin(int id) throws SQLException {

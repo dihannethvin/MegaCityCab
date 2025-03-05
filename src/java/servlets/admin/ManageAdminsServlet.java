@@ -70,12 +70,17 @@ public class ManageAdminsServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String username = request.getParameter("username");
+
+        // Password is optional
         String password = request.getParameter("password");
+        if (password == null || password.trim().isEmpty()) {
+            password = null;  // Avoid updating password if not provided
+        }
 
         Admin admin = new Admin(id, name, username, password);
 
         if (adminDAO.updateAdmin(admin)) {
-            response.sendRedirect("manage-admins");
+            response.sendRedirect("manage-admins");  // Redirect back to dashboard after update
         } else {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error updating admin.");
         }

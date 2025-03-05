@@ -1,4 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="jakarta.servlet.http.*, jakarta.servlet.*" %>
+
+<%
+    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if (session == null || session.getAttribute("admin") == null) {
+        response.sendRedirect("../admin-login.jsp");
+    }
+%>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,7 +82,7 @@
                 <ul class="navbar-nav ms-auto"> <!-- Add ms-auto here to push items to the right -->
                     <li class="nav-item"><a class="nav-link active" href="admin-dashboard.jsp">Dashboard</a></li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger text-white px-4 py-2" href="LogoutServlet">Logout</a>
+                        <a class="nav-link btn btn-danger text-white px-4 py-2" href="../LogoutServlet">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -121,6 +134,16 @@
                         <h3 class="fw-bold text-center">Manage Customers</h3>
                         <p class="text-center">Add, Update, and Delete Customer Records.</p>
                         <a href="manage-customers.jsp" class="btn btn-primary w-100">Go to Manage Customers</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Manage Bookings Section -->
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="fw-bold text-center">Manage Bookings</h3>
+                        <p class="text-center">View, Update, and Cancel Bookings.</p>
+                        <a href="manage-bookings.jsp" class="btn btn-primary w-100">Go to Manage Bookings</a>
                     </div>
                 </div>
             </div>

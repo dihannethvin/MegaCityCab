@@ -7,9 +7,14 @@ public class Driver {
     private String gender;
     private String vehicleType;
     private String licenseNumber;
-    private int vehicleId;  // Rename to vehicleId to match the DB
+    private int vehicleId;  // Renamed from carId to vehicleId
 
-    // Constructor
+    // Default Constructor (Fixes the error)
+    public Driver() {
+        // Default constructor allows object creation without parameters
+    }
+
+    // Parameterized Constructor
     public Driver(int id, String name, String phone, String gender, String vehicleType, String licenseNumber, int vehicleId) {
         this.id = id;
         this.name = name;
@@ -39,6 +44,6 @@ public class Driver {
     public String getLicenseNumber() { return licenseNumber; }
     public void setLicenseNumber(String licenseNumber) { this.licenseNumber = licenseNumber; }
 
-    public int getVehicleId() { return vehicleId; }  // Changed from carId to vehicleId
+    public int getVehicleId() { return vehicleId; }
     public void setVehicleId(int vehicleId) { this.vehicleId = vehicleId; }
 }

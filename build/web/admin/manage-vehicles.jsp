@@ -26,6 +26,7 @@
     </script>
 </head>
 <body>
+    
     <h2>Manage Vehicles</h2>
 
     <!-- Add Vehicle Button -->

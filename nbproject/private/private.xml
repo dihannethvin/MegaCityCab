@@ -3,22 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/dao/CustomerDAO.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin/manage-customers.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/models/Customer.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/admin/AddCustomerServlet.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin-login.jsp</file>
             <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin/manage-admins.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin/admin-dashboard.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/book.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/customer-dashboard.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/booking-history.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/BookingServlet.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/CancelBookingServlet.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/DatabaseConnection/DatabaseConnection.java</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/customer-signup.jsp</file>
-            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/booking-success.jsp</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/admin/ManageAdminsServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin/manage-drivers.jsp</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/web/admin/manage-customers.jsp</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/admin/AddCustomerServlet.java</file>
+            <file>file:/C:/Users/DIHAN/Documents/NetBeansProjects/MegaCityCab/src/java/servlets/admin/ManageCustomersServlet.java</file>
         </group>
     </open-files>
 </project-private>

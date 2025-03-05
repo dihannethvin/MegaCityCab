@@ -70,6 +70,8 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="customer-dashboard.jsp">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link active" href="book.jsp">Book a Ride</a></li>
+                <li class="nav-item"><a class="nav-link" href="booking-history.jsp">Booking History</a></li>
                 <li class="nav-item">
                     <a class="nav-link btn btn-danger text-white px-4 py-2" href="LogoutServlet">Logout</a>
                 </li>

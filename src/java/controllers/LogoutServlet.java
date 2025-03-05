@@ -14,10 +14,10 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false); // Get session if exists
         if (session != null) {
-            session.invalidate(); // Destroy session on logout
+            session.invalidate(); // Destroy session (removes both admin & customer)
+            response.sendRedirect("index.jsp"); // Redirect to home page (index.jsp)
         }
-        response.sendRedirect("index.jsp"); // Redirect to login page
     }
 }
