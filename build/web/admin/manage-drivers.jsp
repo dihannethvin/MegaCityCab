@@ -4,13 +4,11 @@
 <%@ page import="java.util.List" %>
 
 <%
-    // Session handling - Redirect if not logged in
     if (session.getAttribute("admin") == null) {
         response.sendRedirect("admin-login.jsp");
         return;
     }
 
-    // Fetch driver list
     List<Driver> driverList = DriverDAO.getAllDrivers();
 %>
 
@@ -22,33 +20,12 @@
     <title>Manage Drivers - Mega City Cab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body {
-            background-color: #f8f9fa;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .navbar, .footer {
-            background-color: #343a40;
-            color: white;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: auto;
-        }
-        .btn-custom {
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-        }
-        .btn-custom:hover {
-            background-color: #0056b3;
-        }
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+        body { background-color: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh; }
+        .navbar, .footer { background-color: #343a40; color: white; }
+        .footer { text-align: center; padding: 20px 0; margin-top: auto; }
+        .btn-custom { background-color: #007bff; color: white; border-radius: 5px; }
+        .btn-custom:hover { background-color: #0056b3; }
+        .card { border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -103,19 +80,12 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Vehicle Type</label>
-                                <select name="vehicle_type" class="form-control" required>
-                                    <option value="Car">Car</option>
-                                    <option value="SUV">SUV</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
                                 <label class="form-label">License Number</label>
                                 <input type="text" name="license_number" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Car ID</label>
-                                <input type="text" name="vehicle_id" class="form-control" required>
+                                <label class="form-label">Vehicle Type</label>
+                                <input type="text" name="vehicle_type" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-custom w-100">Add Driver</button>
                         </form>
@@ -142,9 +112,8 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
-                                <th>Vehicle Type</th>
                                 <th>License Number</th>
-                                <th>Car ID</th>
+                                <th>Vehicle Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -155,12 +124,11 @@
                                     <td><%= driver.getName() %></td>
                                     <td><%= driver.getPhone() %></td>
                                     <td><%= driver.getGender() %></td>
-                                    <td><%= driver.getVehicleType() %></td>
                                     <td><%= driver.getLicenseNumber() %></td>
-                                    <td><%= driver.getVehicleId() %></td>
+                                    <td><%= driver.getVehicleType() %></td>
                                     <td>
                                         <a href="ManageDriversServlet?action=edit&id=<%= driver.getId() %>" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="../ManageDriversServlet" method="post" style="display:inline;">
+                                        <form action="ManageDriversServlet" method="post" style="display:inline;">
                                             <input type="hidden" name="action" value="delete">
                                             <input type="hidden" name="id" value="<%= driver.getId() %>">
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>

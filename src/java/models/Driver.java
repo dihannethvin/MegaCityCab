@@ -7,22 +7,19 @@ public class Driver {
     private String gender;
     private String vehicleType;
     private String licenseNumber;
-    private int vehicleId;  // Renamed from carId to vehicleId
 
-    // Default Constructor (Fixes the error)
+    // Default Constructor
     public Driver() {
-        // Default constructor allows object creation without parameters
     }
 
     // Parameterized Constructor
-    public Driver(int id, String name, String phone, String gender, String vehicleType, String licenseNumber, int vehicleId) {
+    public Driver(int id, String name, String phone, String gender, String vehicleType, String licenseNumber) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.gender = gender;
         this.vehicleType = vehicleType;
         this.licenseNumber = licenseNumber;
-        this.vehicleId = vehicleId;
     }
 
     // Getters and Setters
@@ -43,7 +40,4 @@ public class Driver {
 
     public String getLicenseNumber() { return licenseNumber; }
     public void setLicenseNumber(String licenseNumber) { this.licenseNumber = licenseNumber; }
-
-    public int getVehicleId() { return vehicleId; }
-    public void setVehicleId(int vehicleId) { this.vehicleId = vehicleId; }
 }
