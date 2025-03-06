@@ -62,7 +62,7 @@ public class DriverDAO {
     // Add a new driver
     public boolean addDriver(Driver driver) {
         String query = "INSERT INTO drivers (name, phone, gender, vehicle_type, license_number) VALUES (?, ?, ?, ?, ?)";
-        
+
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
 
@@ -72,9 +72,15 @@ public class DriverDAO {
             stmt.setString(4, driver.getVehicleType());
             stmt.setString(5, driver.getLicenseNumber());
 
-            return stmt.executeUpdate() > 0;
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Driver inserted successfully into the database.");
+                return true;
+            } else {
+                System.out.println("No rows inserted. Check your SQL query.");
+            }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("SQL Error: " + e.getMessage());
         }
         return false;
     }

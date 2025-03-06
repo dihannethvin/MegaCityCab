@@ -16,6 +16,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Customers - Mega City Cab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #343a40 !important;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+        .footer p {
+            margin-bottom: 0;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .dashboard-links a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .dashboard-links a:hover {
+            text-decoration: underline;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -84,7 +145,7 @@
     </div>
 
     <!-- Customer List -->
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
         <div class="card">
             <div class="card-header bg-secondary text-white">Customer List</div>
             <div class="card-body">
@@ -156,22 +217,17 @@
                             <input type="text" name="username" id="editCustomerUsername" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Password (Leave blank to keep current)</label>
-                            <input type="password" name="password" id="editCustomerPassword" class="form-control">
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label">Address</label>
                             <input type="text" name="address" id="editCustomerAddress" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">NIC</label>
-                            <input type="text" name="nic" id="editCustomerNIC" class="form-control" required>
+                            <input type="text" name="nic" id="editCustomerNic" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Phone</label>
                             <input type="text" name="phone" id="editCustomerPhone" class="form-control" required>
                         </div>
-
                         <button type="submit" class="btn btn-success w-100">Update Customer</button>
                     </form>
                 </div>
@@ -179,7 +235,15 @@
         </div>
     </div>
 
-    <!-- Bootstrap & JavaScript -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-1">🚖 <strong>Mega City Cab</strong> - Admin Dashboard</p>
+            <p class="mb-0">&copy; 2025 Mega City Cab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS & AJAX -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function openEditModal(id, name, email, username, address, nic, phone) {
@@ -188,9 +252,8 @@
             document.getElementById("editCustomerEmail").value = email;
             document.getElementById("editCustomerUsername").value = username;
             document.getElementById("editCustomerAddress").value = address;
-            document.getElementById("editCustomerNIC").value = nic;
+            document.getElementById("editCustomerNic").value = nic;
             document.getElementById("editCustomerPhone").value = phone;
-
             new bootstrap.Modal(document.getElementById("editCustomerModal")).show();
         }
     </script>

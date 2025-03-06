@@ -20,12 +20,65 @@
     <title>Manage Drivers - Mega City Cab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body { background-color: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh; }
-        .navbar, .footer { background-color: #343a40; color: white; }
-        .footer { text-align: center; padding: 20px 0; margin-top: auto; }
-        .btn-custom { background-color: #007bff; color: white; border-radius: 5px; }
-        .btn-custom:hover { background-color: #0056b3; }
-        .card { border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #343a40 !important;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+        .footer p {
+            margin-bottom: 0;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .dashboard-links a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .dashboard-links a:hover {
+            text-decoration: underline;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -62,7 +115,7 @@
                         <h3>Add New Driver</h3>
                     </div>
                     <div class="card-body">
-                        <form action="ManageDriversServlet" method="post">
+                        <form action="manage-drivers" method="post">
                             <input type="hidden" name="action" value="add">
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
@@ -85,7 +138,10 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Vehicle Type</label>
-                                <input type="text" name="vehicle_type" class="form-control" required>
+                                <select name="vehicle_type" class="form-control" required>
+                                    <option value="car">Car</option>
+                                    <option value="suv">SUV</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-custom w-100">Add Driver</button>
                         </form>
@@ -96,7 +152,7 @@
     </div>
 
     <!-- Drivers List -->
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
         <div class="card">
             <div class="card-header bg-secondary text-white text-center">
                 <h3>Driver List</h3>
@@ -127,14 +183,57 @@
                                     <td><%= driver.getLicenseNumber() %></td>
                                     <td><%= driver.getVehicleType() %></td>
                                     <td>
-                                        <a href="ManageDriversServlet?action=edit&id=<%= driver.getId() %>" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="ManageDriversServlet" method="post" style="display:inline;">
-                                            <input type="hidden" name="action" value="delete">
-                                            <input type="hidden" name="id" value="<%= driver.getId() %>">
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
-                                        </form>
+                                        <!-- Edit Button for Modal -->
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateDriverModal<%= driver.getId() %>">Edit</button>
+                                        <!-- Delete Button -->
+                                        <a href="manage-drivers?action=delete&id=<%= driver.getId() %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                                     </td>
                                 </tr>
+
+                                <!-- Update Modal -->
+                                <div class="modal fade" id="updateDriverModal<%= driver.getId() %>" tabindex="-1" aria-labelledby="updateDriverModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="updateDriverModalLabel">Update Driver Information</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="manage-drivers" method="post">
+                                                    <input type="hidden" name="action" value="update">
+                                                    <input type="hidden" name="id" value="<%= driver.getId() %>">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Name</label>
+                                                        <input type="text" name="name" class="form-control" value="<%= driver.getName() %>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Phone</label>
+                                                        <input type="text" name="phone" class="form-control" value="<%= driver.getPhone() %>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Gender</label>
+                                                        <select name="gender" class="form-control" required>
+                                                            <option value="Male" <%= "Male".equals(driver.getGender()) ? "selected" : "" %>>Male</option>
+                                                            <option value="Female" <%= "Female".equals(driver.getGender()) ? "selected" : "" %>>Female</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">License Number</label>
+                                                        <input type="text" name="license_number" class="form-control" value="<%= driver.getLicenseNumber() %>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Vehicle Type</label>
+                                                        <select name="vehicle_type" class="form-control" required>
+                                                            <option value="car" <%= "car".equals(driver.getVehicleType()) ? "selected" : "" %>>Car</option>
+                                                            <option value="suv" <%= "suv".equals(driver.getVehicleType()) ? "selected" : "" %>>SUV</option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-custom w-100">Update Driver</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <% } %>
                         </tbody>
                     </table>
@@ -145,8 +244,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Mega City Cab. All rights reserved.</p>
+        <div class="container">
+            <p class="mb-1">🚖 <strong>Mega City Cab</strong> - Admin Dashboard</p>
+            <p class="mb-0">&copy; 2025 Mega City Cab. All rights reserved.</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

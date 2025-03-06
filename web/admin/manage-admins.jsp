@@ -56,12 +56,48 @@
             padding: 20px 0;
             margin-top: auto;
         }
+        .footer p {
+            margin-bottom: 0;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .dashboard-links a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .dashboard-links a:hover {
+            text-decoration: underline;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
         .btn-custom {
             background-color: #007bff;
             color: white;
         }
         .btn-custom:hover {
             background-color: #0056b3;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
@@ -92,8 +128,8 @@
 
     <!-- Add Admin Form -->
     <div class="container">
-        <div class="card">
-            <div class="card-header bg-primary text-white text-center">
+        <div class="card shadow-lg">
+            <div class="card-header text-center">
                 <h3>Add New Admin</h3>
             </div>
             <div class="card-body">
@@ -118,9 +154,9 @@
     </div>
 
     <!-- Admin List -->
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-header bg-secondary text-white text-center">
+    <div class="container mt-4 mb-4">
+        <div class="card shadow-lg">
+            <div class="card-header text-center bg-secondary text-white">
                 <h3>Admin List</h3>
             </div>
             <div class="card-body">
@@ -181,6 +217,14 @@
             </div>
         </div>
     </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-1">🚖 <strong>Mega City Cab</strong> - Admin Dashboard</p>
+            <p class="mb-0">&copy; 2025 Mega City Cab. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS & AJAX -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

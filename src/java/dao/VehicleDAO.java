@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleDAO {
-
     // Retrieve all vehicles
     public List<Vehicle> getAllVehicles() throws SQLException {
         List<Vehicle> vehicles = new ArrayList<>();
@@ -15,10 +14,9 @@ public class VehicleDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
-
             while (rs.next()) {
                 vehicles.add(new Vehicle(
-                        rs.getInt("vehicle_id"),
+                        rs.getInt("id"), // Using 'id' instead of 'vehicle_id'
                         rs.getString("plate_number"),
                         rs.getString("vehicle_type")
                 ));
@@ -27,24 +25,23 @@ public class VehicleDAO {
         return vehicles;
     }
 
-    // Method to get a vehicle by its ID
+    // Get a vehicle by ID
     public Vehicle getVehicleById(int id) {
         Vehicle vehicle = null;
-        String query = "SELECT * FROM vehicles WHERE vehicle_id = ?";
+        String query = "SELECT * FROM vehicles WHERE id = ?"; // Using 'id'
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()) {
-                // Pass actual values from the ResultSet to the Vehicle constructor
                 vehicle = new Vehicle(
-                    rs.getInt("vehicle_id"),
-                    rs.getString("plate_number"),
-                    rs.getString("vehicle_type")
+                        rs.getInt("id"), // Using 'id'
+                        rs.getString("plate_number"),
+                        rs.getString("vehicle_type")
                 );
             }
         } catch (SQLException e) {
+            e.printStackTrace(); // Debugging output
         }
         return vehicle;
     }
@@ -54,34 +51,29 @@ public class VehicleDAO {
         String query = "INSERT INTO vehicles (plate_number, vehicle_type) VALUES (?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
-
             stmt.setString(1, vehicle.getPlateNumber());
             stmt.setString(2, vehicle.getVehicleType());
-
             return stmt.executeUpdate() > 0;
         }
     }
 
     // Update vehicle details
     public boolean updateVehicle(Vehicle vehicle) throws SQLException {
-        String query = "UPDATE vehicles SET plate_number=?, vehicle_type=? WHERE vehicle_id=?";
+        String query = "UPDATE vehicles SET plate_number=?, vehicle_type=? WHERE id=?"; // Using 'id'
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
-
             stmt.setString(1, vehicle.getPlateNumber());
             stmt.setString(2, vehicle.getVehicleType());
-            stmt.setInt(3, vehicle.getVehicleId());
-
+            stmt.setInt(3, vehicle.getId()); // Using 'id'
             return stmt.executeUpdate() > 0;
         }
     }
 
     // Delete a vehicle
     public boolean deleteVehicle(int vehicleId) throws SQLException {
-        String query = "DELETE FROM vehicles WHERE vehicle_id=?";
+        String query = "DELETE FROM vehicles WHERE id=?"; // Using 'id'
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
-
             stmt.setInt(1, vehicleId);
             return stmt.executeUpdate() > 0;
         }
