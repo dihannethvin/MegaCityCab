@@ -58,6 +58,32 @@ public class DriverDAO {
         }
         return null;
     }
+    
+    // Retrieve all available drivers (drivers not assigned to any ongoing booking)
+    public List<Driver> getAvailableDrivers() {
+        List<Driver> availableDrivers = new ArrayList<>();
+        String query = "SELECT * FROM drivers WHERE id NOT IN (SELECT driver_id FROM bookings WHERE status = 'confirmed')";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Driver driver = new Driver(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("phone"),
+                    rs.getString("gender"),
+                    rs.getString("vehicle_type"),
+                    rs.getString("license_number")
+                );
+                availableDrivers.add(driver);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return availableDrivers;
+    }
 
     // Add a new driver
     public boolean addDriver(Driver driver) {

@@ -8,7 +8,13 @@
     }
 
     List<Vehicle> vehicleList = (List<Vehicle>) request.getAttribute("vehicleList");
+
+    if (vehicleList == null) {
+        response.sendRedirect("manage-vehicles");
+        return;
+    }
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,19 +162,19 @@
                         <tbody>
                             <% for (Vehicle vehicle : vehicleList) { %>
                                 <tr>
-                                    <td><%= vehicle.getVehicleId() %></td>
+                                    <td><%= vehicle.getId() %></td>
                                     <td><%= vehicle.getPlateNumber() %></td>
                                     <td><%= vehicle.getVehicleType() %></td>
                                     <td>
                                         <!-- Edit Button for Modal -->
-                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateVehicleModal<%= vehicle.getVehicleId() %>">Edit</button>
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateVehicleModal<%= vehicle.getId() %>">Edit</button>
                                         <!-- Delete Button -->
-                                        <a href="manage-vehicles?action=delete&id=<%= vehicle.getVehicleId() %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                                        <a href="manage-vehicles?action=delete&id=<%= vehicle.getId() %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                                     </td>
                                 </tr>
 
                                 <!-- Update Modal -->
-                                <div class="modal fade" id="updateVehicleModal<%= vehicle.getVehicleId() %>" tabindex="-1" aria-labelledby="updateVehicleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="updateVehicleModal<%= vehicle.getId() %>" tabindex="-1" aria-labelledby="updateVehicleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -178,7 +184,7 @@
                                             <div class="modal-body">
                                                 <form action="manage-vehicles" method="post">
                                                     <input type="hidden" name="action" value="update">
-                                                    <input type="hidden" name="id" value="<%= vehicle.getVehicleId() %>">
+                                                    <input type="hidden" name="id" value="<%= vehicle.getId() %>">
                                                     <div class="mb-3">
                                                         <label class="form-label">Plate Number</label>
                                                         <input type="text" name="plate_number" class="form-control" value="<%= vehicle.getPlateNumber() %>" required>

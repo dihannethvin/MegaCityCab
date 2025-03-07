@@ -4,9 +4,13 @@ public class Vehicle {
     private int id; // This corresponds to 'id' in the database
     private String plateNumber;
     private String vehicleType;
+    
+    // Default Constructor
+    public Vehicle() {
+    }
 
     // Constructor
-    public Vehicle(int vehicleId, String plateNumber, String vehicleType) {
+    public Vehicle(int id, String plateNumber, String vehicleType) {
         this.id = id; // Maps to 'id' in the DB
         this.plateNumber = plateNumber;
         this.vehicleType = vehicleType;

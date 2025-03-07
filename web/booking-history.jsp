@@ -87,7 +87,6 @@
                         <th>Vehicle Type</th> <%-- Added Vehicle Type --%>
                         <th>Pickup</th>
                         <th>Dropoff</th>
-                        <th>Distance (km)</th>
                         <th>Fare (Rs.)</th>
                         <th>Status</th>
                         <th>Booking Time</th>
@@ -98,7 +97,7 @@
                     <%
                         try {
                             // Fetch all required details from bookings table
-                            String fetchBookingsQuery = "SELECT booking_id, customer_id, driver_id, vehicle_id, vehicle_type, pickup_location, dropoff_location, distance, fare, status, booking_time FROM bookings WHERE customer_id = ? ORDER BY booking_time DESC";
+                            String fetchBookingsQuery = "SELECT booking_id, customer_id, driver_id, vehicle_id, vehicle_type, pickup_location, dropoff_location, fare, status, booking_time FROM bookings WHERE customer_id = ? ORDER BY booking_time DESC";
                             pstmt = conn.prepareStatement(fetchBookingsQuery);
                             pstmt.setInt(1, customer.getId());
                             rs = pstmt.executeQuery();
@@ -118,7 +117,6 @@
                         <td><%= rs.getString("vehicle_type") %></td> <%-- Display Vehicle Type --%>
                         <td><%= rs.getString("pickup_location") %></td>
                         <td><%= rs.getString("dropoff_location") %></td>
-                        <td><%= rs.getDouble("distance") %></td>
                         <td>Rs. <%= rs.getDouble("fare") %></td>
                         <td>
                             <span class="badge 

@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,13 +26,11 @@ public class ManageVehiclesServlet extends HttpServlet {
 
         try {
             if ("edit".equals(action)) {
-                // Fetch specific vehicle details for editing
                 int vehicleId = Integer.parseInt(request.getParameter("id"));
                 Vehicle vehicle = vehicleDAO.getVehicleById(vehicleId);
                 request.setAttribute("vehicle", vehicle);
                 request.getRequestDispatcher("/admin/manage-vehicles.jsp").forward(request, response);
             } else {
-                // Fetch all vehicles for display
                 fetchVehicles(request, response);
             }
         } catch (NumberFormatException e) {
@@ -44,14 +41,9 @@ public class ManageVehiclesServlet extends HttpServlet {
 
     private void fetchVehicles(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            List<Vehicle> vehicleList = vehicleDAO.getAllVehicles();
-            request.setAttribute("vehicleList", vehicleList);
-            request.getRequestDispatcher("/admin/manage-vehicles.jsp").forward(request, response);
-        } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error fetching vehicle list", e);
-            response.sendRedirect("/error.jsp");
-        }
+        List<Vehicle> vehicleList = vehicleDAO.getAllVehicles();
+        request.setAttribute("vehicleList", vehicleList);
+        request.getRequestDispatcher("/admin/manage-vehicles.jsp").forward(request, response);
     }
 
     @Override
@@ -67,32 +59,28 @@ public class ManageVehiclesServlet extends HttpServlet {
             } else if ("delete".equals(action)) {
                 deleteVehicle(request);
             }
-
-            // Refresh the vehicle list after action
             fetchVehicles(request, response);
-        } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Database error processing request", e);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error processing request", e);
             response.sendRedirect("/error.jsp");
         }
     }
 
-    // Add Vehicle
-    private void addVehicle(HttpServletRequest request) throws SQLException {
+    // Add a new vehicle
+    private void addVehicle(HttpServletRequest request) {
         String plateNumber = request.getParameter("plate_number");
         String vehicleType = request.getParameter("vehicle_type");
 
         Vehicle newVehicle = new Vehicle(0, plateNumber, vehicleType);
-        boolean success = vehicleDAO.addVehicle(newVehicle);
-
-        if (!success) {
-            LOGGER.warning("Failed to insert vehicle into database.");
-        } else {
+        if (vehicleDAO.addVehicle(newVehicle)) {
             LOGGER.info("Vehicle added successfully!");
+        } else {
+            LOGGER.warning("Failed to insert vehicle.");
         }
     }
 
-    // Update Vehicle
-    private void updateVehicle(HttpServletRequest request) throws SQLException {
+    // Update an existing vehicle
+    private void updateVehicle(HttpServletRequest request) {
         try {
             int vehicleId = Integer.parseInt(request.getParameter("id"));
             String plateNumber = request.getParameter("plate_number");
@@ -105,28 +93,24 @@ public class ManageVehiclesServlet extends HttpServlet {
             }
 
             Vehicle updatedVehicle = new Vehicle(vehicleId, plateNumber, vehicleType);
-            boolean success = vehicleDAO.updateVehicle(updatedVehicle);
-
-            if (!success) {
-                LOGGER.warning("Failed to update vehicle with ID " + vehicleId);
-            } else {
+            if (vehicleDAO.updateVehicle(updatedVehicle)) {
                 LOGGER.info("Vehicle updated successfully!");
+            } else {
+                LOGGER.warning("Failed to update vehicle.");
             }
         } catch (NumberFormatException e) {
             LOGGER.log(Level.SEVERE, "Invalid vehicle ID format", e);
         }
     }
 
-    // Delete Vehicle
-    private void deleteVehicle(HttpServletRequest request) throws SQLException {
+    // Delete a vehicle
+    private void deleteVehicle(HttpServletRequest request) {
         try {
             int vehicleId = Integer.parseInt(request.getParameter("id"));
-            boolean success = vehicleDAO.deleteVehicle(vehicleId);
-
-            if (!success) {
-                LOGGER.warning("Failed to delete vehicle with ID " + vehicleId);
-            } else {
+            if (vehicleDAO.deleteVehicle(vehicleId)) {
                 LOGGER.info("Vehicle deleted successfully!");
+            } else {
+                LOGGER.warning("Failed to delete vehicle.");
             }
         } catch (NumberFormatException e) {
             LOGGER.log(Level.SEVERE, "Invalid vehicle ID format", e);
